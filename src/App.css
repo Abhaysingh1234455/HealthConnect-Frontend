@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  margin-top: 92px;
+  transition: margin-left 0.3s ease;
+  background-color: #f5f7fa;
+}
+
+.content.sidebar-open {
+  margin-left: 240px;
+  margin-top: 92px;
+}
+@media (max-width: 768px) {
+  .content.sidebar-open {
+    margin-left: 0;
+  }
+  
+  .sidebar {
+    z-index: 1000;
+  }
+  
+  .nav-left .nav-btn {
+    display: none;
+  }
+  
+  .search-bar input {
+    width: 100%;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}

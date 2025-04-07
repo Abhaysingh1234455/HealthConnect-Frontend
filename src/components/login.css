@@ -1,0 +1,12 @@
+.form{
+    max-width: 100%;
+    margin: 8px;
+    
+}
+.health{
+    color: rgb(62, 62, 242);
+    font-weight: 700;
+}
+.login{
+    margin: 12px 7px 0px;
+}
