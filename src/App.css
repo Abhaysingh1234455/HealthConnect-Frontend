@@ -21,8 +21,8 @@
 }
 
 .content.sidebar-open {
-  margin-left: 240px;
-  margin-top: 92px;
+  margin-left: 205px;
+    margin-top: 60px;
 }
 @media (max-width: 768px) {
   .content.sidebar-open {

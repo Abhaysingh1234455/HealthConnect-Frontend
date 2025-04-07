@@ -19,7 +19,7 @@
 //             return;
 //         }
 
-//         axios.post('http://localhost:3001/SignupPage', { Name, Email, Password })
+//         axios.post('https://health-connect-pfqv.onrender.com/SignupPage', { Name, Email, Password })
 //             .then(result => {
 //                 if (result.data.success) {
 //                     // Automatically log in the user after sign up
@@ -77,5 +77,5 @@
 // SignupPage.propTypes = {
 //     setIsAuthenticated: PropTypes.func.isRequired,  // This line ensures 'setIsAuthenticated' is passed as a function
 //   };
-  
+
 // export default SignupPage;

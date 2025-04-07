@@ -17,7 +17,7 @@
 //     setError(null);
 
 //     try {
-//       const response = await axios.post('http://localhost:3001/login', { Email: email, Password: password });
+//       const response = await axios.post('https://health-connect-pfqv.onrender.com/login', { Email: email, Password: password });
 
 //       console.log("Full Login Response:", response.data);
 
@@ -41,28 +41,28 @@
 //         <div className="col-md-6">
 //           <div className="card shadow-lg p-4">
 //             <h2 className="text-center mb-4">Login</h2>
-//             {error && <div className="alert alert-danger">{error}</div>} 
+//             {error && <div className="alert alert-danger">{error}</div>}
 //             <form onSubmit={handleSubmit}>
 //               <div className="mb-3">
 //                 <label htmlFor="email" className="form-label">Email address:</label>
-//                 <input 
-//                   type="email" 
+//                 <input
+//                   type="email"
 //                   className="form"
-//                   id="email" 
-//                   placeholder="Enter your email" 
-//                   required 
-//                   onChange={(e) => setEmail(e.target.value)} 
+//                   id="email"
+//                   placeholder="Enter your email"
+//                   required
+//                   onChange={(e) => setEmail(e.target.value)}
 //                 />
 //               </div>
 //               <div className="mb-3">
 //                 <label htmlFor="password" className="form-label">Password:</label>
-//                 <input 
-//                   type="password" 
+//                 <input
+//                   type="password"
 //                   className="form"
-//                   id="password" 
-//                   placeholder="Enter your password" 
-//                   required  
-//                   onChange={(e) => setPassword(e.target.value)} 
+//                   id="password"
+//                   placeholder="Enter your password"
+//                   required
+//                   onChange={(e) => setPassword(e.target.value)}
 //                 />
 //               </div>
 //               <button type="submit" className="btn btn-primary w-100">Login</button>

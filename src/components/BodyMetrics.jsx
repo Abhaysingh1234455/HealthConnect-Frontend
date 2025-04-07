@@ -18,7 +18,8 @@ export default function BodyMetrics() {
   useEffect(() => {
     if (!userId) return;
 
-    axios.get(`https://health-connect-pfqv.onrender.com/get-metrics/${userId}`)
+    axios
+      .get(`https://health-connect-pfqv.onrender.com/get-metrics/${userId}`)
       .then((response) => {
         setMetrics(response.data.metrics || {});
       })
@@ -29,21 +30,24 @@ export default function BodyMetrics() {
 
   // Save updated metrics to backend
   const saveMetricsToBackend = (updatedMetrics) => {
-    axios.post("https://health-connect-pfqv.onrender.com/save-metrics", {
-      userId,
-      metrics: updatedMetrics,
-    })
-    .then(() => {
-      console.log("Metrics saved successfully.");
-    })
-    .catch((error) => {
-      console.error("Error saving metrics:", error);
-    });
+    axios
+      .post("https://health-connect-pfqv.onrender.com/save-metrics", {
+        userId,
+        metrics: updatedMetrics,
+      })
+      .then(() => {
+        console.log("Metrics saved successfully.");
+      })
+      .catch((error) => {
+        console.error("Error saving metrics:", error);
+      });
   };
 
   // Add a new metric
   const handleAddMetric = () => {
-    const newMetric = prompt("Enter new metric in the format: Metric Name: Value");
+    const newMetric = prompt(
+      "Enter new metric in the format: Metric Name: Value"
+    );
 
     if (newMetric) {
       const parts = newMetric.split(":");
@@ -69,7 +73,10 @@ export default function BodyMetrics() {
   // Edit existing metric
   const handleEditMetric = (oldKey) => {
     const currentVal = metrics[oldKey];
-    const updated = prompt("Edit metric in the format: Metric Name: Value", `${oldKey}: ${currentVal}`);
+    const updated = prompt(
+      "Edit metric in the format: Metric Name: Value",
+      `${oldKey}: ${currentVal}`
+    );
 
     if (updated) {
       const parts = updated.split(":");
@@ -109,7 +116,9 @@ export default function BodyMetrics() {
     <div className="metrics-container" id="metrics">
       <div className="metrics-header">
         <h2>Body Metrics</h2>
-        <button className="add-metric-btn" onClick={handleAddMetric}>+</button>
+        <button className="add-metric-btn" onClick={handleAddMetric}>
+          +
+        </button>
       </div>
 
       <div className="metrics-grid">

@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
+import PropTypes from "prop-types";
 import { useEffect, useState, useCallback, useRef } from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
-import "./HospitalCards.css"
+import "./HospitalCards.css";
 
-const GOOGLE_API_KEY = "AIzaSyBXJrAiZu4ee7hYREDhXYUCYsvuqMbGtx0";
+const GOOGLE_API_KEY = "AIzaSyBXJrAiZu4ee7hYREDhXYUCYsvuqMbGtx0"; // Replace with env var in production
 const MAP_ID = "a99b7f93c9be9003";
 const libraries = ["places"];
 
@@ -23,6 +24,7 @@ const HospitalMap = () => {
     libraries,
   });
 
+  // Get user's current location
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -42,6 +44,7 @@ const HospitalMap = () => {
     }
   }, []);
 
+  // Fetch nearby hospitals from backend
   const fetchNearbyHospitals = useCallback(async () => {
     if (!location) return;
     try {
@@ -50,7 +53,7 @@ const HospitalMap = () => {
       );
       const data = await response.json();
       if (data.status === "OK") {
-        setHospitals(data.results.slice(0, 6)); // ✅ First 6 hospitals
+        setHospitals(data.results.slice(0, 6));
       } else {
         setError("No hospitals found.");
       }
@@ -101,13 +104,14 @@ const HospitalMap = () => {
       {/* 🏥 Hospital Cards */}
       <div className="container">
         {hospitals.map((hospital, index) => (
-          <div
-            key={index}
-            className="card"
-          >
+          <div key={index} className="card">
             <h3 className="card-title">{hospital.name}</h3>
-            <p className="card-rating"><strong>Rating:</strong> {hospital.rating || "Not available"} ⭐</p>
-            <p className="card-address"><strong>Address:</strong> {hospital.vicinity}</p>
+            <p className="card-rating">
+              <strong>Rating:</strong> {hospital.rating || "Not available"} ⭐
+            </p>
+            <p className="card-address">
+              <strong>Address:</strong> {hospital.vicinity}
+            </p>
             <button
               onClick={() => alert(`Details for ${hospital.name}`)}
               className="card-button"
@@ -121,6 +125,11 @@ const HospitalMap = () => {
   ) : (
     <p>Loading map...</p>
   );
+};
+
+HospitalMap.propTypes = {
+  hospitals: PropTypes.array.isRequired,
+  setHospitals: PropTypes.func.isRequired,
 };
 
 export default HospitalMap;

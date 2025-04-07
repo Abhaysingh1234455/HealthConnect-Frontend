@@ -1,13 +1,17 @@
 import HospitalMap from "./HospitalMap";
+import PropTypes from 'prop-types';
 
-
-const Home = () => {
+const Home = ({ setHospitals }) => {
   return (
     <>
       <h1>Nearby Hospitals</h1>
-      <HospitalMap />
+      <HospitalMap setHospitals={setHospitals} />
     </>
   );
+};
+
+Home.propTypes = {
+  setHospitals: PropTypes.func.isRequired,
 };
 
 export default Home;

@@ -17,6 +17,7 @@ export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem('isAuthenticated') === 'true'
   );
+  const [hospitals, setHospitals] = useState([]);
   const userId = localStorage.getItem("userId");
 
   // ✅ Ensure auth persists across refresh
@@ -45,7 +46,7 @@ export default function App() {
                 <div className="main-container">
                   <Sidebar isOpen={isSidebarOpen} />
                   <main className={`content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
-                    <Home />
+                    <Home setHospitals={setHospitals}/>
                   </main>
                 </div>
               </>
@@ -88,19 +89,19 @@ export default function App() {
             ) : <Navigate to="/login" />}
           />
           <Route
-            path="/Appointments"
-            element={isAuthenticated ? (
-              <>
-                <Navbar toggleSidebar={() => setSidebarOpen(!isSidebarOpen)} />
-                <div className="main-container">
-                  <Sidebar isOpen={isSidebarOpen} />
-                  <main className={`content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
-                    <Appointment />
-                  </main>
-                </div>
-              </>
-            ) : <Navigate to="/login" />}
-          />
+              path="/Appointments"
+              element={isAuthenticated ? (
+                <>
+                  <Navbar toggleSidebar={() => setSidebarOpen(!isSidebarOpen)} />
+                  <div className="main-container">
+                    <Sidebar isOpen={isSidebarOpen} />
+                    <main className={`content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
+                      <Appointment hospitals={hospitals} />
+                    </main>
+                  </div>
+                </>
+              ) : <Navigate to="/login" />}
+            />
           <Route
             path="/reports"
             element={isAuthenticated ? (

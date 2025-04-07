@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';  
 import "./Navbar.css";
-import Searchbar from './Searchbar';
 
 export default function Navbar({ toggleSidebar }) {
   return (
@@ -23,9 +22,6 @@ export default function Navbar({ toggleSidebar }) {
         >
           Logout
         </button>
-      </div>
-      <div className="search-bar">
-        <Searchbar />
       </div>
     </nav>
   );
